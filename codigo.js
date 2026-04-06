@@ -17,10 +17,7 @@ async function obtenerPokemon(nombre) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
         const data = await response.json();
-  
-        let nombre2;
-        nombre2 = data.name;
-        let img = data.sprites.front_default;
+        
         let tipos = [];
         data.types.forEach(element => {
             tipos.push(element.type.name + " ")
@@ -28,8 +25,8 @@ async function obtenerPokemon(nombre) {
 
 
         texto.innerHTML = `
-        <p>${nombre2}</p>
-        <img src="${img}"/>
+        <p>${data.name}</p>
+        <img src="${data.sprites.front_default}"/>
         <p>Tipos: ${tipos}</p>
         <p>Peso: ${data.weight}</p>
         <p>Altura:${data.height}</p>
