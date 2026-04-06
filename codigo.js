@@ -4,7 +4,9 @@ const input = document.getElementById("input");
 
 
 boton.addEventListener("click",() =>{
+    
     if (input.value != false) {
+        texto.innerText = "Cargando"
         obtenerPokemon(input.value)
     }
     else
@@ -17,7 +19,7 @@ async function obtenerPokemon(nombre) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
         const data = await response.json();
-        
+
         let tipos = [];
         data.types.forEach(element => {
             tipos.push(element.type.name + " ")
